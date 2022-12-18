@@ -30,10 +30,6 @@ const data = [
     },
     {
         name: "Product 3",
-        color: "orange"
-    },
-    {
-        name: "Product 4",
         color: "blue"
     }
 ]
