@@ -19,6 +19,26 @@ function html(body, title = "Hello") {
     `
 }
 
+const data = [
+    {
+        name: "Product 1",
+        color: "red"
+    },
+    {
+        name: "Product 2",
+        color: "green"
+    },
+    {
+        name: "Product 3",
+        color: "orange"
+    },
+    {
+        name: "Product 4",
+        color: "blue"
+    }
+]
+
 module.exports = {
+    data,
     html
 }
