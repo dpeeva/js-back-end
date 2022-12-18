@@ -23,9 +23,9 @@ const catalogPage = `
 // event is always a request
 const server = http.createServer(router.main)
 
-router.routes["/"] = homeController
-router.routes["/about"] = aboutController
-router.routes["/catalog"] = catalogController
+router.register("/", homeController)
+router.register("/about", aboutController)
+router.register("/catalog", catalogController)
 
 server.listen(3000)
 

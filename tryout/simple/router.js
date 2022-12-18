@@ -28,7 +28,11 @@ function main(req, res) {
     return handler
 }
 
+function register(pathname, handler) {
+    routes[pathname] = handler
+}
+
 module.exports = {
     main,
-    routes
+    register
 }
