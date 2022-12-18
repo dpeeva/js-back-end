@@ -38,7 +38,17 @@ function register(method, pathname, handler) {
     routes[pathname][method] = handler
 }
 
+function get(pathname, handler) {
+    register("GET", pathname, handler)
+}
+
+function post(pathname, handler) {
+    register("POST", pathname, handler)
+}
+
 module.exports = {
     main,
-    register
+    register,
+    get,
+    post
 }

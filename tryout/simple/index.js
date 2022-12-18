@@ -8,8 +8,8 @@ const router = require("./router")
 // event is always a request
 const server = http.createServer(router.main)
 
-router.register("/", homeController)
-router.register("/about", aboutController)
-router.register("/catalog", catalogController)
+router.get("/", homeController)
+router.get("/about", aboutController)
+router.get("/catalog", catalogController)
 
 server.listen(3000)
