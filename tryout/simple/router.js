@@ -19,17 +19,12 @@ function main(req, res) {
 
     const url = new URL(req.url, `http://${req.headers.host}`)
 
-    const handler = match(url)
+    const handler = routes[url.pathname]
     if (typeof handler == "function") {
         handler(req, res)
     } else {
         defaultController(req, res)
     }
-    return handler
-}
-
-function match(url) {
-    const handler = routes[url.pathname]
     return handler
 }
 
