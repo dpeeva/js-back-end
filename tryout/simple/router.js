@@ -19,17 +19,23 @@ function main(req, res) {
 
     const url = new URL(req.url, `http://${req.headers.host}`)
 
-    const handler = routes[url.pathname]
+    let handler
+    const actions = routes[url.pathname]
+    if (actions) {
+        handler = actions[req.method]
+    }
     if (typeof handler == "function") {
         handler(req, res)
     } else {
         defaultController(req, res)
     }
-    return handler
 }
 
-function register(pathname, handler) {
-    routes[pathname] = handler
+function register(method, pathname, handler) {
+    if (routes[pathname] == undefined) {
+        routes[pathname] = {}
+    }
+    routes[pathname][method] = handler
 }
 
 module.exports = {
