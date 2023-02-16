@@ -1,21 +1,34 @@
 const http = require("http")
 
-const homePage = `
-    <h1>Home Page</h1>
-    <p>Welcome to our site</p>
-`
-const aboutPage = `
-    <h1>About Us</h1>
-    <p>Contact: +1-555-1973</p>
-`
-const catalogPage = `
-    <h1>Catalog</h1>
-    <p>List of items</p>
-`
-const defaultPage = `
-    <h1>404</h1>
-    <p>Not found</p>
-`
+function homePage(req, res) {
+    res.write(html(`
+        <h1>Home Page</h1>
+        <p>Welcome to our site</p>
+    `))
+    res.end()
+}
+function aboutPage(req, res) {
+    res.write(html(`
+        <h1>About Us</h1>
+        <p>Contact: +1-555-1973</p>
+    `))
+    res.end()
+}
+function catalogPage(req, res) {
+    res.write(html(`
+        <h1>Catalog</h1>
+        <p>List of items</p>
+    `))
+    res.end()
+}
+function defaultPage(req, res) {
+    res.statusCode = 404
+    res.write(html(`
+        <h1>404</h1>
+        <p>Not found</p>
+    `))
+    res.end()
+}
 
 const routes = {
     "/": homePage,
@@ -29,15 +42,12 @@ const server = http.createServer((request, response) => {
     const url = new URL(request.url, `http://${request.headers.host}`)
     console.log(url)
 
-    const page = routes[url.pathname]
+    const handler = routes[url.pathname]
 
-    if (page !== undefined) {
-        response.write(html(page))
-        response.end()
+    if (typeof handler == "function") {
+        handler(request, response)
     } else {
-        response.statusCode = 404
-        response.write(html(defaultPage))
-        response.end()
+        defaultPage(request, response)
     }
 })
 
