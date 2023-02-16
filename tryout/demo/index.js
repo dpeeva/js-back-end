@@ -22,13 +22,15 @@ const aboutPage = `
 `
 
 const server = http.createServer((request, response) => {
-    console.log("Request received.")
-    console.log(request.url)
+    console.log(">>>", request.method, request.url)
 
-    if (request.url == "/") {
+    const url = new URL(request.url, `http://${request.headers.host}`)
+    console.log(url)
+
+    if (url.pathname == "/") {
         response.write(homePage)
         response.end()
-    } else if (request.url == "/about") {
+    } else if (url.pathname == "/about") {
         response.write(aboutPage)
         response.end()
     } else {
