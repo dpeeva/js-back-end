@@ -9,6 +9,7 @@ function html(body, title = "Demo site") {
         <nav>
             <a href="/">Home</a>
             <a href="/catalog">Catalog</a>
+            <a href="/create">Create</a>
             <a href="/about">About</a>
         </nav>
         ${body}
