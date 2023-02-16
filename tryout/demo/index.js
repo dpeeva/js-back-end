@@ -10,10 +10,6 @@ router.register("/about", aboutPage)
 router.register("/catalog", catalogPage)
 router.register("default", defaultPage)
 
-
-const server = http.createServer((request, response) => {
-    console.log(">>>", request.method, request.url)
-    router.match(request, response)
-})
+const server = http.createServer(router.match)
 
 server.listen(3000)
