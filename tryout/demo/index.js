@@ -8,6 +8,10 @@ const aboutPage = `
     <h1>About Us</h1>
     <p>Contact: +1-555-1973</p>
 `
+const catalogPage = `
+    <h1>Catalog</h1>
+    <p>List of items</p>
+`
 const defaultPage = `
     <h1>404</h1>
     <p>Not found</p>
@@ -16,6 +20,7 @@ const defaultPage = `
 const routes = {
     "/": homePage,
     "/about": aboutPage,
+    "/contact": catalogPage,
 }
 
 const server = http.createServer((request, response) => {
