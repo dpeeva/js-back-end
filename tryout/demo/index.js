@@ -1,28 +1,19 @@
 const http = require("http")
+const router = require("./router")
 const { aboutPage } = require("./controllers/aboutController")
 const { homePage } = require("./controllers/homeController")
 const { catalogPage } = require("./controllers/catalogController")
 const { defaultPage } = require("./controllers/defaultController")
 
-const routes = {
-    "/": homePage,
-    "/about": aboutPage,
-    "/contact": catalogPage,
-}
+router.register("/", homePage)
+router.register("/about", aboutPage)
+router.register("/catalog", catalogPage)
+router.register("default", defaultPage)
+
 
 const server = http.createServer((request, response) => {
     console.log(">>>", request.method, request.url)
-
-    const url = new URL(request.url, `http://${request.headers.host}`)
-    // console.log(url)
-
-    const handler = routes[url.pathname]
-
-    if (typeof handler == "function") {
-        handler(request, response)
-    } else {
-        defaultPage(request, response)
-    }
+    router.match(request, response)
 })
 
 server.listen(3000)
