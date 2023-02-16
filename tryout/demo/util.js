@@ -17,6 +17,20 @@ function html(body, title = "Demo site") {
     `
 }
 
+const data = [
+    {
+        id: "product_1",
+        name: "Product 1",
+        color: "Red",
+    },
+    {
+        id: "product_2",
+        name: "Product 2",
+        color: "Green",
+    }
+]
+
 module.exports = {
     html,
+    data
 }
