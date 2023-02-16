@@ -8,26 +8,26 @@ const defaultPage = `
 <p>The resource you requested cannot be found.</p>
 `
 
-function defaultController(req, res) {
-    res.statusCode = 404
-    res.write(html(defaultPage))
-    res.end()
+function defaultController(request, response) {
+    response.statusCode = 404
+    response.write(html(defaultPage))
+    response.end()
 }
 
-function main(req, res) {
-    console.log(">>>", req.method, req.url)
+function main(request, response) {
+    console.log(">>>", request.method, request.url)
 
-    const url = new URL(req.url, `http://${req.headers.host}`)
+    const url = new URL(request.url, `http://${request.headers.host}`)
 
     let handler
     const actions = routes[url.pathname]
     if (actions) {
-        handler = actions[req.method]
+        handler = actions[request.method]
     }
     if (typeof handler == "function") {
-        handler(req, res)
+        handler(request, response)
     } else {
-        defaultController(req, res)
+        defaultController(request, response)
     }
 }
 
