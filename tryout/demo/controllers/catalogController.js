@@ -12,9 +12,9 @@ function catalogPage(request, response) {
 }
 
 function createPage(request, response) {
-    response.write(`
+    response.write(html(`
         <h1>Create Item</h1>
-        <form>
+        <form method="POST" action="/create">
             <label>Name: <input type="text" name="name" /></label>
             <label>Color:
                 <select name="color">
@@ -25,8 +25,12 @@ function createPage(request, response) {
             </label>
             <input type="submit" value="Create" />
         </form>
-    `)
+    `, "Create New Item"))
     response.end()
+}
+
+function createItem(request, response) {
+    // handle POST request
 }
 
 module.exports = {

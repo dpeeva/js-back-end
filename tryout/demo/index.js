@@ -5,11 +5,11 @@ const { homePage } = require("./controllers/homeController")
 const { catalogPage, createPage } = require("./controllers/catalogController")
 const { defaultPage } = require("./controllers/defaultController")
 
-router.register("/", homePage)
-router.register("/about", aboutPage)
-router.register("/catalog", catalogPage)
-router.register("/create", createPage)
-router.register("default", defaultPage)
+router.get("/", homePage)
+router.get("/about", aboutPage)
+router.get("/catalog", catalogPage)
+router.get("/create", createPage)
+router.get("default", defaultPage)
 
 const server = http.createServer(router.match)
 
