@@ -8,6 +8,10 @@ const aboutPage = `
     <h1>About Us</h1>
     <p>Contact: +1-555-1973</p>
 `
+const defaultPage = `
+    <h1>404</h1>
+    <p>Not found</p>
+`
 
 const server = http.createServer((request, response) => {
     console.log(">>>", request.method, request.url)
@@ -23,7 +27,7 @@ const server = http.createServer((request, response) => {
         response.end()
     } else {
         response.statusCode = 404
-        response.write("Not found")
+        response.write(html(defaultPage))
         response.end()
     }
 })
