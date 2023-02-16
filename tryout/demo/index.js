@@ -13,17 +13,21 @@ const defaultPage = `
     <p>Not found</p>
 `
 
+const routes = {
+    "/": homePage,
+    "/about": aboutPage,
+}
+
 const server = http.createServer((request, response) => {
     console.log(">>>", request.method, request.url)
 
     const url = new URL(request.url, `http://${request.headers.host}`)
     console.log(url)
 
-    if (url.pathname == "/") {
-        response.write(html(homePage))
-        response.end()
-    } else if (url.pathname == "/about") {
-        response.write(html(aboutPage))
+    const page = routes[url.pathname]
+
+    if (page !== undefined) {
+        response.write(html(page))
         response.end()
     } else {
         response.statusCode = 404
