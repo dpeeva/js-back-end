@@ -16,6 +16,10 @@ personSchema.methods.sayHi = function () {
 
 personSchema.virtual("name").get(function () {
     return `${this.firstName} ${this.lastName}`
+}).set(function (value) {
+    const [firstName, lastName] = value.split(" ")
+    this.firstName = firstName
+    this.lastName = lastName
 })
 
 const Person = model("Person", personSchema)

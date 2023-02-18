@@ -30,5 +30,8 @@ async function start() {
     console.log(data[0].sayHi())
     console.log(data[0].name)
 
+    data[0].name = "John Peterson"
+    await data[0].save()
+
     await mongoose.disconnect()
 }
