@@ -1,24 +1,17 @@
-const mongodb = require("mongodb")
+const mongoose = require("mongoose")
 
-const connectionString = "mongodb://127.0.0.1:27017"
+const connectionString = "mongodb://127.0.0.1:27017/local"
 
 start()
 
 async function start() {
-    // Get access to Mongo client
-    const MongoClient = new mongodb.MongoClient(connectionString, {
-        writeConcern: {
-            wtimeout: 2500 // estimated time, then request will timeout
-        },
-        useUnifiedTopology: true
-    })
+    await mongoose.connect(
+        connectionString,
+        {
+            useUnifiedTopology: true,
+            useNewUrlParser: true // to avoid deprecation warning
+        }
+    )
 
-    await MongoClient.connect()
-
-
-    const db = MongoClient.db("local")
-    const collection = db.collection("startup_log")
-    const query = collection.find({})
-    const data = await query.toArray()
-    console.log(data)
+    console.log("Database connected")
 }
