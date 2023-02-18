@@ -1,0 +1,6 @@
+.DS_Store is a file
+.git is a directory
+.gitignore is a file
+.vscode is a directory
+summary.txt is a file
+tryout is a directory
