@@ -8,9 +8,15 @@ router.get("/", (req, res) => {
     )
 })
 
-router.post("/", (req, res) => {
-    console.log("Handling POST request")
-    res.redirect("/catalog")
-})
+router.post("/",
+    (req, res, next) => {
+        console.log("Handling POST request")
+        console.log("Logging from middleware")
+        next()
+    },
+    (req, res) => {
+        res.redirect("/catalog")
+    }
+)
 
 module.exports = router
