@@ -5,16 +5,14 @@ const path = require("path")
 const server = http.createServer((req, res) => {
     if (req.method == "GET") {
         if (req.url == "/index.html") {
-            fs.readFile(
+            const fileStream = fs.createReadStream(
                 path.resolve(__dirname, "../streams/static/index.html"),
-                (err, file) => {
-                    res.writeHead(200, {
-                        "Content-Type": "text/html"
-                    })
-                    res.write(file)
-                    res.end()
-                }
             )
+            res.writeHead(200, {
+                "Content-Type": "text/html"
+            })
+            fileStream.on("data", chunk => res.write(chunk))
+            fileStream.on("end", () => res.end())
         } else {
             res.writeHead(404)
             res.write("Not found")
