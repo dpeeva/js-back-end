@@ -1,5 +1,5 @@
-const { subscribe } = require("./observer")
+const emitter = require("./observer")
 
-subscribe("message", (data) => {
+emitter.on("message", (data) => {
     console.log("module 1 received data", data)
 })
