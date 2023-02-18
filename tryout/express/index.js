@@ -10,6 +10,17 @@ app.get("/", (req, res) => {
     )
 })
 
+app.get("/img", (req, res) => {
+    res.sendFile(
+        path.resolve(__dirname, "../express/cat.jpg"),
+    )
+})
+app.get("/img_downoad", (req, res) => {
+    res.download(
+        path.resolve(__dirname, "../express/cat.jpg"),
+    )
+})
+
 app.route("/create")
     .get((req, res) => {
         res.send(
