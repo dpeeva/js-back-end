@@ -1,9 +1,13 @@
-import express from "express"
+const express = require("express")
+const path = require("path")
 
 const app = express()
 
 app.get("/", (req, res) => {
-    res.send("Hello there")
+    // res.send("Hello there")
+    res.sendFile(
+        path.resolve(__dirname, "../express/index.html"),
+    )
 })
 
 app.route("/create")
