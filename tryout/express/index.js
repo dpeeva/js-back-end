@@ -1,8 +1,8 @@
 const express = require("express")
 const path = require("path")
-// const { create, middleware } = require("./controllers/create")
 const create = require("./controllers/create")
 const catalog = require("./controllers/catalog")
+const logger = require("./middleware/logger")
 
 const app = express()
 
@@ -24,21 +24,11 @@ app.get("/img_downoad", (req, res) => {
     )
 })
 
-app.use((req, res, next) => {
-    console.log("Apply Middleware to every URL address of the App")
-    console.log(">>>", req.method, req.url)
-    next()
-})
+app.use(logger())
 
 app.use("/create", create)
 // app.use("/create", middleware, create)
-app.use("/catalog",
-    (req, res, next) => {
-        console.log(">>>", req.method, req.url)
-        next()
-    },
-    catalog
-)
+app.use("/catalog", catalog)
 
 app.get("/data", (req, res) => {
     res.json([
