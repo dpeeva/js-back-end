@@ -23,34 +23,8 @@ app.get("/img_downoad", (req, res) => {
     )
 })
 
-app.use(create)
-app.use(catalog)
-/*
-app.route("/create")
-    .get((req, res) => {
-        res.send(
-            "<form method='POST'><input name='name'><button>Send</button></form>"
-        )
-    })
-    .post((req, res) => {
-        console.log("Handling POST request")
-        res.redirect("/catalog")
-    })
-
-app.get("/catalog", (req, res) => {
-    res.send("Catalog Page")
-})
-
-app.get("/catalog/:productId", (req, res) => {
-    console.log(req.params.productId)
-    res.send("Product Details Page")
-})
-
-app.get("/catalog/:category/:id", (req, res) => {
-    console.log(req.params)
-    res.send("Nested Parameters: " + req.params.category + ", " + req.params.id)
-})
-*/
+app.use("/create", create)
+app.use("/catalog", catalog)
 
 app.get("/data", (req, res) => {
     res.json([
