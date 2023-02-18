@@ -1,5 +1,7 @@
 const express = require("express")
 const path = require("path")
+const create = require("./controllers/create")
+const catalog = require("./controllers/catalog")
 
 const app = express()
 
@@ -21,6 +23,9 @@ app.get("/img_downoad", (req, res) => {
     )
 })
 
+app.use(create)
+app.use(catalog)
+/*
 app.route("/create")
     .get((req, res) => {
         res.send(
@@ -45,6 +50,7 @@ app.get("/catalog/:category/:id", (req, res) => {
     console.log(req.params)
     res.send("Nested Parameters: " + req.params.category + ", " + req.params.id)
 })
+*/
 
 app.get("/data", (req, res) => {
     res.json([
