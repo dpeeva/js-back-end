@@ -1,8 +1,13 @@
 const fs = require("fs")
 const path = require("path")
 
-const text = fs.readFileSync(
-    path.resolve(__dirname, "demo.txt")
-)
 
-console.log(text.toString())
+fs.readFile(
+    path.resolve(__dirname, "demo.txt"),
+    (err, data) => {
+        if (err != null) {
+            return console.error(err.message)
+        }
+        console.log(data.toString())
+    }
+)
