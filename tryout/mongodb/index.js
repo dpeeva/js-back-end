@@ -19,9 +19,10 @@ async function start() {
     console.log("Database connected")
 
     const person = new Person({
-        firstName: "John",
-        lastName: "Smith",
-        age: -3,
+        firstName: "Baba",
+        lastName: "Vida",
+        age: 65,
+        nationality: "Bulgarian"
     })
 
     await person.save()
