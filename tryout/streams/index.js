@@ -1,9 +1,24 @@
 const http = require("http")
+const fs = require("fs")
+const path = require("path")
 
 const server = http.createServer((req, res) => {
     if (req.method == "GET") {
-        res.write("OK")
-        res.end()
+        if (req.url == "/index.html") {
+            const file = fs.readFileSync(
+                path.resolve(__dirname, "../streams/static/index.html"),
+            )
+            res.writeHead(200, {
+                "Content-Type": "text/html"
+            })
+            res.write(file)
+            res.end()
+        } else {
+            res.writeHead(404)
+            res.write("Not found")
+            res.end()
+        }
+
     } else if (req.method == "POST") {
         const body = []
         req.on("data", chunk => {
