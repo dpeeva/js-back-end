@@ -6,6 +6,8 @@ const logger = require("./middleware/logger")
 
 const app = express()
 
+app.use(express.static("static"))
+
 app.get("/", (req, res) => {
     // res.send("Hello there")
     res.sendFile(
@@ -27,7 +29,6 @@ app.get("/img_downoad", (req, res) => {
 app.use(logger())
 
 app.use("/create", create)
-// app.use("/create", middleware, create)
 app.use("/catalog", catalog)
 
 app.get("/data", (req, res) => {
