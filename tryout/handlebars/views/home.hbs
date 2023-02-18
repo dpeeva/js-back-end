@@ -1,2 +1,25 @@
 <h1>{{message}}</h1>
+{{#if username}}
+<p>Welcome, {{username}}</p>
+{{else}}
+<p>Guest user</p>
+{{/if}}
 <p>{{response}}</p>
+
+{{#with product}}
+<div>
+    <p>Name: {{title}}</p>
+    <p>Price: {{price}}</p>
+    <p>Color: {{color}}</p>
+</div>
+{{/with}}
+
+{{#if contacts}}
+<ul>
+    {{#each contacts}}
+    {{>userCard}}
+    {{/each}}
+</ul>
+{{else}}
+<p>No contacts yet</p>
+{{/if}}

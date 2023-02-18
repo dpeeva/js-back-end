@@ -10,12 +10,34 @@ app.engine(".hbs", handlebars.engine)
 app.set("view engine", ".hbs")
 
 app.get("/", (req, res) => {
-    // res.send("ok")
-    // res.render("<h1>Hello there</h1>") // Failed to lookup view "<h1>Hello there</h1>" in views directory
+    // res.locals.message = "Hello"
+    // res.locals.response = "General Kenobi"
+
     res.render("home", {
         // layout: false,
+        username: "Peter",
         message: "Hello",
         response: "General Kenobi",
+        title: "Handlebars Demo",
+        product: {
+            name: "Product Name",
+            price: 0.5,
+            color: "Beige",
+        },
+        contacts: [
+            {
+                name: "Peter",
+                email: "peter@abv.bg",
+            },
+            {
+                name: "Mary",
+                email: "mary@abv.bg",
+            },
+            {
+                name: "John",
+                email: "john@abv.bg",
+            },
+        ]
     })
 })
 
