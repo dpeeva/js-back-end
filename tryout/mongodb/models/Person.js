@@ -6,9 +6,13 @@ const personSchema = new Schema({
     age: {
         type: Number,
         required: true,
-        min: [0, "Age cannot be negative"]
+        // min: [0, "Age cannot be negative"]
     }
 })
+
+personSchema.path("age").validate(function () {
+    return this.age >= 0
+}, "Age cannot be negative")
 
 personSchema.methods.sayHi = function () {
     return `${this.firstName} says hi!`

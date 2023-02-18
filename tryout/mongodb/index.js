@@ -18,20 +18,20 @@ async function start() {
 
     console.log("Database connected")
 
-    //     const person = new Person({
-    //         firstName: "John",
-    //         lastName: "Smith",
-    //         age: 34,
-    //     })
-    // 
-    //     await person.save()
+    const person = new Person({
+        firstName: "John",
+        lastName: "Smith",
+        age: -3,
+    })
+
+    await person.save()
 
     const data = await Person.find({})
     console.log(data[0].sayHi())
     console.log(data[0].name)
 
-    data[0].name = "John Peterson"
-    await data[0].save()
+    // data[0].name = "John Peterson"
+    // await data[0].save()
 
     await mongoose.disconnect()
 }
