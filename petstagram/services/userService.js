@@ -12,14 +12,7 @@ async function register(email, username, password) {
         throw new Error("Username is taken")
     }
 
-
-    const existingEmail = await User.findOne({ email }).collation(
-        { locale: "en", strength: 2 }
-    )
-    if (existingEmail) {
-        throw new Error("Email is taken")
-    }
-
+    console.log(password, email, username)
     const hashedPassword = await bcrypt.hash(password, 10)
     const user = await User.create({
         email,
@@ -28,7 +21,7 @@ async function register(email, username, password) {
     })
 
     // TODO: check assignment if tregistration creates user session
-    return token = createSession(user)
+    return createSession(user)
 }
 
 async function login(username, password) {
@@ -44,13 +37,12 @@ async function login(username, password) {
         throw new Error("Incorrect username or password")
     }
 
-    return token = createSession(user)
+    return createSession(user)
 }
 
-function createSession({ _id, email, username }) {
+function createSession({ _id, username }) {
     const payload = {
         _id,
-        email,
         username
     }
 

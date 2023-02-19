@@ -28,7 +28,7 @@ async function deleteById(id) {
     await Pet.findByIdAndRemove(id)
 }
 
-async function addPhoto(petId, userId) {
+async function addComment(petId, userId) {
     const pet = await Pet.findById(petId)
 
     pet.commentList.push(userId)
@@ -45,5 +45,5 @@ module.exports = {
     create,
     update,
     deleteById,
-    addPhoto
+    addComment
 }

@@ -9,6 +9,7 @@ module.exports = () => (req, res, next) => {
             // console.log("Read successful, user", userData.username)
             req.user = userData
             req.locals.username = userData.username
+            // req.locals.email = userData.email //
         } catch (error) {
             // console.log("Invalid token")
             res.clearCookie("token")

@@ -1,5 +1,4 @@
-const { create } = require("../models/User")
-const { getById, deleteById, addPhoto } = require("../services/petService")
+const { getById, deleteById, addPhoto, getAll, create } = require("../services/petService")
 const { parseError } = require("../util/parser")
 
 const catalogController = require("express").Router()
@@ -7,7 +6,7 @@ const catalogController = require("express").Router()
 catalogController.get("/", async (req, res) => {
     const pets = await getAll()
 
-    res.render("home", {
+    res.render("catalog", {
         title: "Catalog Page",
         pets,
     })
@@ -116,7 +115,7 @@ catalogController.get("/:id/pet", async (req, res) => {
             throw new Error("Cannot add a pet")
         }
 
-        await addPhoto(req.params.id, req.user._id)
+        await addComment(req.params.id, req.user._id)
         res.redirect(`/catalog/${req.params.id}/details`)
     } catch (error) {
         res.render("create", {

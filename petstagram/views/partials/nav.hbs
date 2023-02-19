@@ -21,6 +21,7 @@
                     </a>
                 </li>
 
+                {{#unless username}}
                 <!--For Guest User-->
                 <li class="nav-item">
                     <!-- Link to Login Page -->
@@ -35,7 +36,7 @@
                     </a>
                 </li>
 
-                {{#if username}}
+                {{else}}
                 <!--For login users-->
                 <li class="nav-item">
                     <!-- Link to Add Photo Page -->
@@ -57,7 +58,7 @@
                         <i>Logout</i>
                     </a>
                 </li>
-                {{/if}}
+                {{/unless}}
             </ul>
         </div>
     </div>

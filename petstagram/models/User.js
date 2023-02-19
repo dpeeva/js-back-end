@@ -7,18 +7,9 @@ const userSchema = new Schema({
     },
     email: {
         type: String, required: true, unique: true,
-        minlength: [10, "Username must be at least 10 characters long"]
+        minlength: [10, "Email must be at least 10 characters long"]
     },
     hashedPassword: { type: String, required: true }, // service generates the password
-    roles: {
-        type: [
-            {
-                type: String,
-                enum: ["user", "admin"]
-            }
-        ],
-        default: ["user"]
-    }
 })
 
 // needed for uniqueness of username
