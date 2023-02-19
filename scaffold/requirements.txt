@@ -5,14 +5,12 @@
 - static
 - cookie-parser
 - body parser
-
 [x] User registration 
 - cookies and sessions 
 - hashing of passwords 
 - JSON Web Token
-
 [x] Error handling
-
+[x] User role guards
 [ ] Full CRUD (Application specific)
 - catalog
 - details
