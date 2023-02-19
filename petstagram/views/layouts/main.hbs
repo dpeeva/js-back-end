@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/static/images/free-30-instagram-stories-icons23_122570.png">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    {{#if errors}}
+    <div>
+        <div class="errorContainer">
+            {{#each errors}}
+            <p>{{this}}</p>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+
+    <!-- Starts Header Section with Navigation Bar -->
+    <header>
+        {{> nav}}
+    </header>
+
+    <!-- Starts Main Section -->
+    <main>
+        {{{body}}}
+    </main>
+
+    <!-- Start Footer Section -->
+    <div class="footer">
+        <span class="footer-section">
+            © 2023 SoftUni Back-End Exam
+        </span>
+    </div>
+
+</body>
+
+</html>
