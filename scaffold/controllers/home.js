@@ -4,6 +4,7 @@ const homeController = require("express").Router()
 homeController.get("/", (req, res) => {
     res.render("home", {
         title: "Home Page",
+        user: req.user, // will be undefined in case of no session
     })
 })
 

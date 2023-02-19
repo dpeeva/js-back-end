@@ -50,8 +50,8 @@ function createSession({ _id, username }) {
     return token = jwt.sign(payload, JWT_SECRET)
 }
 
-function verifyToken() {
-    //
+function verifyToken(token) {
+    return jwt.verify(token, JWT_SECRET)
 }
 
 

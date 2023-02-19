@@ -1,15 +1,17 @@
-[ ] Use of templates (configure handlebars)
-[ ] Use of database (connection + user model)
-[ ] Use of express plugin libraries
-[ ] - static
-[ ] - tempatlates for User, Login, Register, Logout
+[x] Use of templates (configure handlebars)
+- templates for User, Login, Register, Logout
+[x] Use of database (connection + user model)
+[x] Use of express plugin libraries (middlewares)
+- static
+- cookie-parser
+- body parser
 
-[ ] User registration 
-[ ] - cookies and sessions 
-[ ] - hashing of passwords 
-[ ] - JSON Web Token
+[x] User registration 
+- cookies and sessions 
+- hashing of passwords 
+- JSON Web Token
 
-[ ] Error handling
+[x] Error handling
 
 [ ] Full CRUD (Application specific)
 - catalog
@@ -18,4 +20,4 @@
 - edit
 - delete
 
-[ ] Demo global error handling
+[x] Demo global error handling
