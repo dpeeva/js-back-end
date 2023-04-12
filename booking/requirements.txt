@@ -1,5 +1,6 @@
 [x] Use of templates
-[ ] Use of database (mongoose)
+[x] Use of database (mongoose)
+[ ] Use of express plugin libraries
 [ ] User registration and session
 [ ] - cookies and session
 [ ] - hashing of passwords
