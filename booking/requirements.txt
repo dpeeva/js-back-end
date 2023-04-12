@@ -1,10 +1,10 @@
-Use of templates
-Use of database (mongoose)
-User registration and session
-- cookies and session
-- hashing of passwords
-- JSON Web Token
-Error handling
+[x] Use of templates
+[ ] Use of database (mongoose)
+[ ] User registration and session
+[ ] - cookies and session
+[ ] - hashing of passwords
+[ ] - JSON Web Token
+[ ] Error handling
 Full CRUD (application specific)
 - catalog (reading many)
 - details (reading one)
