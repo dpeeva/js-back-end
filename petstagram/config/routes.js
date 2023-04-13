@@ -9,6 +9,10 @@ module.exports = (app) => {
     app.use("/catalog", catalogController)
     app.use("/profile", profileController)
 
+    app.use("/*", (req, res) => {
+        res.render("404")
+    })
+
     app.use((err, req, res, next) => {
         console.log("Global error handling")
         console.log(err.message)
