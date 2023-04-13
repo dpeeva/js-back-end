@@ -1,11 +1,10 @@
 function parseError(error) {
-    // return error.message.split("\n")
-
     if (error.name == "ValidationError") {
-        // then it's a Mongoose error
+        // Mongoose error
         return Object.values(error.errors).map(v => v.message)
+    } else if (Array.isArray(error)) {
+        return error.map(x => x.msg)
     } else {
-        // then it's an error we have registered
         return error.message.split("\n")
     }
 }

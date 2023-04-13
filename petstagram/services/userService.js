@@ -12,7 +12,7 @@ async function register(email, username, password) {
         throw new Error("Username is taken")
     }
 
-    console.log(password, email, username)
+    // console.log(password, email, username)
     const hashedPassword = await bcrypt.hash(password, 10)
     const user = await User.create({
         email,
@@ -20,8 +20,8 @@ async function register(email, username, password) {
         hashedPassword
     })
 
-    // TODO: check assignment if tregistration creates user session
-    return createSession(user)
+    const token = createSession(user)
+    return token
 }
 
 async function login(username, password) {
@@ -37,7 +37,8 @@ async function login(username, password) {
         throw new Error("Incorrect username or password")
     }
 
-    return createSession(user)
+    const token = createSession(user)
+    return token
 }
 
 function createSession({ _id, username }) {
@@ -46,7 +47,8 @@ function createSession({ _id, username }) {
         username
     }
 
-    return token = jwt.sign(payload, JWT_SECRET)
+    const token = jwt.sign(payload, JWT_SECRET)
+    return token
 }
 
 function verifyToken(token) {
