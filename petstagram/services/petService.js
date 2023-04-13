@@ -1,11 +1,26 @@
 const Pet = require("../models/Pet")
 
 async function getAll() {
-    return Pet.find({})
+    return Pet.find(
+        {}
+    ).populate({
+        path: "owner",
+        select: "username"
+    }).lean()
 }
 
 async function getById(id) {
-    return Pet.findById(id).lean()
+    return Pet.findById(id).populate({
+        path: "owner",
+        select: "username"
+    }).lean()
+    // TODO: add .populate("commentList")
+}
+
+async function getUserPets(userId) {
+    return await Pet.find({
+        owner: userId
+    }).lean()
 }
 
 async function create(pet) {
@@ -28,20 +43,20 @@ async function deleteById(id) {
     await Pet.findByIdAndRemove(id)
 }
 
-async function addComment(petId, userId) {
+async function addComment(petId, userId, comment) {
     const pet = await Pet.findById(petId)
 
-    pet.commentList.push(userId)
+    pet.commentList.push({
+        userId,
+        comment
+    })
     await pet.save()
-}
-
-async function deletePhoto(petId, userId) {
-    //
 }
 
 module.exports = {
     getAll,
     getById,
+    getUserPets,
     create,
     update,
     deleteById,
