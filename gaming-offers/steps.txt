@@ -1,0 +1,27 @@
+npm init -y
+npm i express bcrypt express-handlebars cookie-parser jsonwebtoken
+npm i mongoose
+
+// npm install -g nodemon
+
+// npm i validator // email validator
+// npm i express-validator // letters and digits
+
+Requirements:
+
+[x] Use of templates
+[x] Use of a database
+[x] Use of express plugin libraries
+[x] User registration
+[x] - cookies and session
+[x] - hashing of passwords
+[x] - JSON Web Token
+[x] Error handling
+[] User role guards
+Full CRUD (application specific)
+- catalog
+- details
+- create 
+- edit
+- delete
+
